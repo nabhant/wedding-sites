@@ -1,5 +1,5 @@
-import botanicalHead from '../assets/leftBotanicalHead.png'
-import botanicalStem from '../assets/leftBotanicalStem.png'
+import botanicalHead from '../assets/leftBotanicalHead.PNG'
+import botanicalStem from '../assets/leftBotanicalStem.PNG'
 
 function BotanicalLeft() {
   return (

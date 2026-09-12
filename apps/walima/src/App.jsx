@@ -6,6 +6,10 @@ function App() {
     <main className="walima-site">
       <InvitationHero />
       <AdditionalDetails />
+
+      <footer className="site-footer">
+        Made by Nabhan :)
+      </footer>
     </main>
   )
 }

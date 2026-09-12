@@ -1,7 +1,9 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import {TextPlugin} from 'gsap/TextPlugin'
 
+gsap.registerPlugin(ScrollTrigger, TextPlugin)
 
 import {CalendarDays, MapPin} from 'lucide-react'
 
@@ -12,6 +14,8 @@ function InvitationHero() {
   // Used as the ScrollTrigger target and also scopes GSAP selectors
   // to this component through gsap.context().
   const heroRef = useRef(null)
+
+  const invitationText = `THE TARIQ AND SUBZWARI FAMILIES INVITE YOU TO ATTEND THE WALIMA CEREMONY OF`
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -36,7 +40,14 @@ function InvitationHero() {
 
       gsap.set('.invitation-line', {
         autoAlpha: 0,
-        y: 20,
+      })
+
+      gsap.set('.invitation-typed', {
+        text: '',
+      })
+
+      gsap.set('.typing-cursor', {
+        autoAlpha: 1,
       })
 
       gsap.set('.couple-names', {
@@ -93,6 +104,7 @@ function InvitationHero() {
         ease: 'power2.out',
       })
 
+      
 
       /* =====================================================
          SCROLL-DRIVEN STORYBOARD
@@ -153,11 +165,22 @@ function InvitationHero() {
 
       /* Invitation wording appears. */
 
-      timeline.to('.invitation-line', {
+      // Reveal the line container before typing begins.
+      timeline.set('.invitation-line', {
         autoAlpha: 1,
-        y: 0,
-        duration: 1,
+      })
+
+      // Type the invitation sentence as the user scrolls.
+      timeline.to('.invitation-typed', {
+        text: invitationText,
+        duration: 1.8,
         ease: 'none',
+      })
+
+      // Remove the cursor once typing is complete.
+      timeline.to('.typing-cursor', {
+        autoAlpha: 0,
+        duration: 0.2,
       })
 
 
@@ -257,9 +280,21 @@ function InvitationHero() {
             aria-label="Bismillah"
           />
 
-          <p className="invitation-line">
-            THE TARIQ AND SUBZWARI FAMILIES INVITE YOU TO ATTEND
-            THE WALIMA CEREMONY OF
+          <p
+            className="invitation-line"
+            aria-label={invitationText}
+          >
+            <span
+              className="invitation-typed"
+              aria-hidden="true"
+            />
+
+            <span
+              className="typing-cursor"
+              aria-hidden="true"
+            >
+              |
+            </span>
           </p>
 
           <div className="couple-names">

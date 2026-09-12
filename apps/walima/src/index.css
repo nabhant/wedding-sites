@@ -242,6 +242,28 @@ a {
   letter-spacing: 0.04em;
 }
 
+.typing-cursor {
+  display: inline-block;
+
+  margin-left: 0.1em;
+
+  font-weight: 300;
+
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
 
 /* -------------------------
    Couple Names
@@ -819,4 +841,22 @@ a {
 
 .guest-information {
   gap: 3rem;
+}
+
+/* -------------------------
+   Footer
+-------------------------- */
+
+.site-footer {
+  padding: 1.5rem 1rem 2rem;
+
+  background: var(--ivory);
+  color: var(--text-brown);
+
+  text-align: center;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+
+  opacity: 0.75;
 }

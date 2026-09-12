@@ -1,0 +1,822 @@
+:root {
+  --ivory: #f5f0e4;
+  --text-brown: #604b3a;
+  --sage: #8d9b78;
+  --pistachio: #bcc5a2;
+  --olive: #626a4b;
+
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-script: "Pinyon Script", cursive;
+
+  font-family: var(--font-serif);
+
+  color: var(--text-brown);
+  background: var(--ivory);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+/* -------------------------
+   Global
+-------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  background: var(--ivory);
+}
+
+a {
+  color: inherit;
+}
+
+.walima-site {
+  width: 100%;
+  min-height: 100vh;
+
+  background: var(--ivory);
+}
+
+
+/* -------------------------
+   Invitation Hero
+-------------------------- */
+
+.invitation-hero {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 100svh;
+
+  padding: 4rem 2rem;
+
+  overflow: hidden;
+}
+
+.invitation-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(1050px, 100%);
+
+  text-align: center;
+}
+
+/* -------------------------
+   Scroll Prompt
+
+   State 1 only.
+   Anchored to the hero rather than the invitation content so
+   it always appears at the bottom-center of the viewport.
+-------------------------- */
+
+.scroll-prompt {
+  position: absolute;
+
+  left: 50%;
+  bottom: clamp(28px, 5vh, 55px);
+
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 0.5rem;
+
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+
+  color: var(--text-brown);
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+  user-select: none;
+
+  /* GSAP controls the actual visible opacity. */
+  will-change: transform, opacity;
+}
+
+.scroll-arrow {
+  display: block;
+
+  font-size: 1rem;
+  line-height: 1;
+
+  /*
+    Independent arrow movement.
+    Safe to animate because GSAP moves the parent prompt,
+    not this child element.
+  */
+  animation: scroll-float 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+
+/* -------------------------
+   Botanicals
+-------------------------- */
+
+.botanical-left,
+.botanical-right {
+
+  position: absolute;
+  bottom: 0;
+
+  width: clamp(230px, 19vw, 360px);
+  aspect-ratio: 1 / 2;
+
+  pointer-events: none;
+  user-select: none;
+
+  z-index: 1;
+}
+
+.botanical-left {
+  left: clamp(60px, 6vw, 110px);
+}
+
+.botanical-right {
+  right: clamp(60px, 6vw, 110px);
+
+  transform: scaleX(-1);
+}
+
+.botanical-stem-image,
+.botanical-head-image {
+
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: bottom left;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+.botanical-stem-image {
+  z-index: 1;
+  will-change: clip-path;
+}
+
+.botanical-head-image {
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+
+/* -------------------------
+   Bismillah
+-------------------------- */
+
+.bismillah {
+  width: clamp(220px, 25vw, 390px);
+  aspect-ratio: 541.6 / 118.399;
+
+  margin: 0 auto 2.75rem;
+
+  background-color: var(--text-brown);
+
+  -webkit-mask-image: url("./assets/Bismillah.svg");
+  mask-image: url("./assets/Bismillah.svg");
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+
+/* -------------------------
+   Invitation Copy
+-------------------------- */
+
+.invitation-line {
+  max-width: 850px;
+
+  margin: 0 auto 2.5rem;
+
+  font-size: clamp(0.7rem, 1.3vw, 1rem);
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+}
+
+
+/* -------------------------
+   Couple Names
+-------------------------- */
+
+.couple-names {
+  margin-bottom: 2.5rem;
+}
+
+.couple-names h1 {
+  margin: 0;
+
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.couple-names span {
+  display: block;
+
+  margin: 0.3rem 0;
+
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.couple-names h1,
+.couple-names span {
+  font-family: var(--font-script);
+  font-style: normal;
+}
+
+
+/* -------------------------
+   Divider
+-------------------------- */
+
+.divider {
+  width: min(520px, 75%);
+  height: 1px;
+
+  margin: 0 auto 2rem;
+
+  background: var(--text-brown);
+
+  opacity: 0.65;
+}
+
+
+/* -------------------------
+   Presence Line
+-------------------------- */
+
+.presence-line {
+  margin: 0 0 2rem;
+
+  font-size: clamp(0.8rem, 1.1vw, 1.05rem);
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+
+
+/* -------------------------
+   Event Details
+-------------------------- */
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+
+  width: fit-content;
+  max-width: 100%;
+
+  margin: 0 auto;
+
+  gap: 1.75rem;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+.detail-row p {
+  margin: 0;
+}
+
+.detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-brown);
+}
+
+.detail-icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+
+  stroke-width: 1.4;
+}
+
+.detail-separator {
+  margin: 0 0.6rem;
+}
+
+.venue-name {
+  margin-bottom: 0.3rem !important;
+
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.venue-address {
+  margin-bottom: 0.4rem !important;
+
+  font-size: clamp(0.85rem, 1vw, 1rem);
+}
+
+.directions-link {
+  font-size: clamp(0.8rem, 0.9vw, 0.95rem);
+
+  text-underline-offset: 3px;
+}
+
+
+/* Elements manipulated repeatedly during the pinned GSAP sequence. */
+.bismillah,
+.invitation-line,
+.couple-names,
+.divider,
+.presence-line,
+.event-details {
+  will-change: transform, opacity;
+}
+
+/* =========================================================
+   ADDITIONAL DETAILS
+   ========================================================= */
+
+.additional-details {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100svh;
+
+  padding: 7rem 2rem;
+
+  background: var(--ivory);
+
+  text-align: center;
+}
+
+.details-content {
+  width: min(850px, 100%);
+  margin: 0 auto;
+}
+
+
+/* -------------------------
+   RSVP / Opening
+-------------------------- */
+
+.details-intro {
+  margin-bottom: 6rem;
+}
+
+.details-eyebrow {
+  margin: 0 0 2rem;
+
+  font-size: 0.8rem;
+  line-height: 1.6;
+
+  letter-spacing: 0.12em;
+}
+
+.details-intro h2 {
+  margin: 0 0 2.25rem;
+
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.rsvp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 180px;
+
+  padding: 0.95rem 2.5rem;
+
+  border: 1px solid var(--text-brown);
+  border-radius: 999px;
+
+  background: var(--text-brown);
+  color: var(--ivory);
+
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+
+  text-decoration: none;
+
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.rsvp-button:hover {
+  background: transparent;
+  color: var(--text-brown);
+
+  transform: translateY(-2px);
+}
+
+
+/* -------------------------
+   Guest Information
+-------------------------- */
+
+.guest-information {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  );
+
+  gap: 4rem;
+
+  padding-top: 4rem;
+
+  border-top: 1px solid
+    color-mix(in srgb, var(--text-brown) 35%, transparent);
+}
+
+.info-block {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.info-label {
+  margin: 0 0 1.25rem;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+}
+
+.info-block h3 {
+  margin: 0 0 1rem;
+
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.info-block > p:not(.info-label) {
+  margin: 0 auto;
+
+  max-width: 320px;
+
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+
+/* -------------------------
+   Recommended Colors
+-------------------------- */
+
+.color-palette {
+  display: flex;
+  justify-content: center;
+
+  gap: 0.75rem;
+
+  margin-top: 1.75rem;
+}
+
+.swatch {
+  display: block;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  border: 1px solid
+    color-mix(in srgb, var(--text-brown) 20%, transparent);
+}
+
+.swatch-cream {
+  background: #eee7d8;
+}
+
+.swatch-taupe {
+  background: #b7a792;
+}
+
+.swatch-sage {
+  background: var(--sage);
+}
+
+.swatch-pistachio {
+  background: var(--pistachio);
+}
+
+.swatch-olive {
+  background: var(--olive);
+}
+
+/* =========================================================
+   SMALLER DESKTOP / LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .invitation-content {
+    width: min(820px, 78%);
+  }
+
+  .botanical-left,
+  .botanical-right {
+    will-change: clip-path;
+    width: clamp(200px, 18vw, 280px);
+  }
+
+  .botanical-left {
+    left: 20px;
+  }
+
+  .botanical-right {
+    right: 20px;
+  }
+
+  .couple-names h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+  }
+}
+
+
+/* =========================================================
+   TABLET / NARROW LAPTOP
+   ========================================================= */
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .invitation-hero {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .invitation-content {
+    width: min(700px, 88%);
+  }
+
+  .bismillah {
+    width: clamp(230px, 34vw, 320px);
+
+    margin-bottom: 2.25rem;
+  }
+
+  .invitation-line {
+    max-width: 600px;
+
+    margin-bottom: 2rem;
+
+    font-size: 0.85rem;
+  }
+
+  .couple-names {
+    margin-bottom: 2rem;
+  }
+
+  .couple-names h1 {
+    font-size: clamp(3rem, 6vw, 4rem);
+  }
+
+  .couple-names span {
+    font-size: 1.8rem;
+  }
+
+  .divider {
+    width: 72%;
+
+    margin-bottom: 1.6rem;
+  }
+
+  .presence-line {
+    margin-bottom: 1.5rem;
+
+    font-size: 0.9rem;
+  }
+
+  .event-details {
+    gap: 1.35rem;
+  }
+
+  .botanical-left,
+  .botanical-right {
+    width: clamp(190px, 25vw, 270px);
+  }
+
+  .botanical-left {
+    left: -25px;
+  }
+
+  .botanical-right {
+    right: -25px;
+  }
+}
+
+.additional-details {
+  padding: 6rem 2rem;
+}
+
+.details-intro {
+  margin-bottom: 5rem;
+}
+
+.guest-information {
+  gap: 3rem;
+}
+
+.details-link {
+  display: inline-block;
+
+  margin-top: 1.25rem;
+
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+  text-underline-offset: 4px;
+}
+
+.details-link:hover {
+  opacity: 0.65;
+}
+
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .botanical-left,
+  .botanical-right {
+    will-change: clip-path;
+    bottom: -55px;
+    width: 150px;
+  }
+
+  .invitation-content {
+    width: 100%;
+  }
+
+  .bismillah {
+    width: clamp(180px, 55vw, 240px);
+
+    margin-bottom: 2rem;
+  }
+
+  .invitation-line {
+    max-width: 320px;
+
+    margin-bottom: 1.75rem;
+
+    font-size: 0.68rem;
+    line-height: 1.6;
+  }
+
+  .couple-names {
+    margin-bottom: 1.75rem;
+  }
+
+  .couple-names h1 {
+    font-size: clamp(2rem, 11vw, 3rem);
+    line-height: 1.05;
+  }
+
+  .couple-names span {
+    margin: 0.15rem 0;
+
+    font-size: 1.4rem;
+  }
+
+  .divider {
+    width: 82%;
+
+    margin-bottom: 1.5rem;
+  }
+
+  .presence-line {
+    margin-bottom: 1.5rem;
+
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .event-details {
+    width: 100%;
+
+    gap: 1.5rem;
+  }
+
+  .detail-row {
+    grid-template-columns: 1fr;
+
+    gap: 0.5rem;
+
+    justify-items: center;
+  }
+
+  .detail-icon {
+    font-size: 1.25rem;
+  }
+
+  .detail-separator {
+    display: block;
+
+    height: 0.25rem;
+
+    margin: 0;
+
+    font-size: 0;
+  }
+
+  .venue-name {
+    font-size: 1.05rem;
+  }
+
+  .venue-address {
+    font-size: 0.8rem;
+  }
+
+  .directions-link {
+    font-size: 0.8rem;
+  }
+
+  /*
+    On mobile the plants become corner decorations.
+    Most of each botanical remains outside the content area.
+  */
+
+  .botanical-left,
+  .botanical-right {
+    bottom: -55px;
+
+    width: 150px;
+  }
+
+  .botanical-left {
+    left: -20px;
+  }
+
+  .botanical-right {
+    right: -20px;
+  }
+}
+
+.additional-details {
+  padding: 6rem 2rem;
+}
+
+.details-intro {
+  margin-bottom: 5rem;
+}
+
+.guest-information {
+  gap: 3rem;
+}

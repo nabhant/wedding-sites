@@ -30,23 +30,19 @@ function AdditionalDetails() {
         ATTIRE
         </p>
 
-        <h3>
-        Formal · Garden Inspired
-        </h3>
-
         <p>
-        Neutral and botanical tones are warmly encouraged.
+        Soft pastels and neutral tones are warmly encouraged.
         </p>
 
         <div
         className="color-palette"
         aria-label="Recommended color palette"
         >
-        <span className="swatch swatch-cream" />
-        <span className="swatch swatch-taupe" />
-        <span className="swatch swatch-sage" />
-        <span className="swatch swatch-pistachio" />
-        <span className="swatch swatch-olive" />
+          <span className="swatch swatch-ivory" />
+          <span className="swatch swatch-buttercream" />
+          <span className="swatch swatch-powder-blue" />
+          <span className="swatch swatch-brown" />
+          <span className="swatch swatch-plum" />
         </div>
     </div>
 
@@ -56,10 +52,6 @@ function AdditionalDetails() {
         <p className="info-label">
         ACCOMMODATIONS
         </p>
-
-        <h3>
-        Traveling From Out of Town?
-        </h3>
 
         <p>
         Several hotels are available near The Tides Estate
@@ -84,7 +76,8 @@ function AdditionalDetails() {
         </p>
 
         <p>
-        Gift information to be added.
+        Your presence and blessings are sincerely appreciated.
+        Kindly, no boxed gifts.
         </p>
     </div>
 

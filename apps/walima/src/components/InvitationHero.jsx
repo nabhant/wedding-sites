@@ -1,21 +1,20 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import {TextPlugin} from 'gsap/TextPlugin'
 
-gsap.registerPlugin(ScrollTrigger, TextPlugin)
+
 
 import {CalendarDays, MapPin} from 'lucide-react'
 
 import BotanicalLeft from './BotanicalLeft'
 import BotanicalRight from './BotanicalRight'
 
+gsap.registerPlugin(ScrollTrigger)
+
 function InvitationHero() {
   // Used as the ScrollTrigger target and also scopes GSAP selectors
   // to this component through gsap.context().
   const heroRef = useRef(null)
-
-  const invitationText = `THE TARIQ AND SUBZWARI FAMILIES INVITE YOU TO ATTEND THE WALIMA CEREMONY OF`
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -38,16 +37,9 @@ function InvitationHero() {
         y: 35,
       })
 
-      gsap.set('.invitation-line', {
+        gsap.set('.invitation-line', {
         autoAlpha: 0,
-      })
-
-      gsap.set('.invitation-typed', {
-        text: '',
-      })
-
-      gsap.set('.typing-cursor', {
-        autoAlpha: 1,
+        y: 20,
       })
 
       gsap.set('.couple-names', {
@@ -140,58 +132,48 @@ function InvitationHero() {
          into its final invitation position.
       ====================================================== */
 
-      timeline.to(
-        '.scroll-prompt',
-        {
-          autoAlpha: 0,
-          y: -25,
-          duration: 0.4,
-          ease: 'none',
-        },
-        0
-      )
-
-      timeline.to(
-        '.bismillah',
-        {
-          scale: 1,
-          y: 0,
-          duration: 1.5,
-          ease: 'none',
-        },
-        0
-      )
-
-
-      /* Invitation wording appears. */
-
-      // Reveal the line container before typing begins.
-      timeline.set('.invitation-line', {
-        autoAlpha: 1,
-      })
-
-      // Type the invitation sentence as the user scrolls.
-      timeline.to('.invitation-typed', {
-        text: invitationText,
-        duration: 1.8,
+     timeline.to(
+      '.bismillah',
+      {
+        scale: 1,
+        y: 0,
+        duration: 1.5,
         ease: 'none',
-      })
+      },
+      0
+    )
 
-      // Remove the cursor once typing is complete.
-      timeline.to('.typing-cursor', {
+    /* State 2 begins here */
+    timeline.addLabel('state2')
+
+    timeline.to(
+      '.scroll-prompt',
+      {
         autoAlpha: 0,
-        duration: 0.2,
-      })
+        y: -25,
+        duration: 0.3,
+        ease: 'none',
+      },
+      'state2'
+    )
 
-
-      /* Couple names appear. */
-
-      timeline.to('.couple-names', {
+    timeline.to(
+      '.invitation-line',
+      {
         autoAlpha: 1,
         y: 0,
-        duration: 1.2,
+        duration: 1,
         ease: 'none',
-      })
+      },
+      'state2'
+    )
+
+    timeline.to('.couple-names', {
+      autoAlpha: 1,
+      y: 0,
+      duration: 1.2,
+      ease: 'none',
+    })
 
 
       /* =====================================================
@@ -264,124 +246,116 @@ function InvitationHero() {
   }, [])
 
 
-  return (
-    <section
-      className="invitation-hero"
-      ref={heroRef}
-    >
-      {/* Main formal invitation content */}
-      <div className="invitation-content">
+ return (
+  <section
+    className="invitation-hero"
+    ref={heroRef}
+  >
+    {/* Main formal invitation content */}
+    <div className="invitation-content">
 
-        <div className="invitation-intro">
+      {/* Intro portion of invitation */}
+      <div className="invitation-intro">
 
-          <div
-            className="bismillah"
-            role="img"
-            aria-label="Bismillah"
-          />
+        <div
+          className="bismillah"
+          role="img"
+          aria-label="Bismillah"
+        />
 
-          <p
-            className="invitation-line"
-            aria-label={invitationText}
-          >
-            <span
-              className="invitation-typed"
-              aria-hidden="true"
-            />
+        <p className="invitation-line">
+          THE TARIQ AND SUBZWARI FAMILIES INVITE YOU TO ATTEND
+          THE WALIMA CEREMONY OF
+        </p>
 
-            <span
-              className="typing-cursor"
+        <div className="couple-names">
+          <h1>Nabhan Tariq</h1>
+          <span>and</span>
+          <h1>Nabiha Subzwari</h1>
+        </div>
+
+      </div>
+
+
+      {/* Date and venue information */}
+      <div className="invitation-details">
+
+        <div className="divider" />
+
+        <p className="presence-line">
+          WE REQUEST THE HONOR OF YOUR PRESENCE ON:
+        </p>
+
+        <div className="event-details">
+
+          <div className="detail-row">
+            <div
+              className="detail-icon"
               aria-hidden="true"
             >
-              |
-            </span>
-          </p>
+              <CalendarDays />
+            </div>
 
-          <div className="couple-names">
-            <h1>Nabhan Tariq</h1>
-            <span>and</span>
-            <h1>Nabiha Subzwari</h1>
+            <p>
+              SUNDAY, JULY 18th, 2027
+              <span className="detail-separator">|</span>
+              11:30 AM
+            </p>
           </div>
 
-        </div>
 
+          <div className="detail-row">
+            <div
+              className="detail-icon"
+              aria-hidden="true"
+            >
+              <MapPin />
+            </div>
 
-        <div className="invitation-details">
-
-          <div className="divider" />
-
-          <p className="presence-line">
-            WE REQUEST THE HONOR OF YOUR PRESENCE ON:
-          </p>
-
-          <div className="event-details">
-
-            <div className="detail-row">
-              <div className="detail-icon" aria-hidden="true">
-                <CalendarDays />
-              </div>
-
-              <p>
-                SUNDAY, JULY 18th, 2027
-                <span className="detail-separator">|</span>
-                11:30 AM
+            <div>
+              <p className="venue-name">
+                The Tides Estate
               </p>
+
+              <p className="venue-address">
+                1245 Belmont Ave, North Haledon, NJ 07508
+              </p>
+
+              <a
+                href="https://maps.app.goo.gl/jzUUMPDtd37RtYeA7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="directions-link"
+              >
+                Get Directions
+              </a>
             </div>
-
-
-            <div className="detail-row">
-              <div className="detail-icon" aria-hidden="true">
-                <MapPin />
-              </div>
-
-              <div>
-                <p className="venue-name">
-                  The Tides Estate
-                </p>
-
-                <p className="venue-address">
-                  1245 Belmont Ave, North Haledon, NJ 07508
-                </p>
-
-                <a
-                  href="https://maps.app.goo.gl/jzUUMPDtd37RtYeA7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="directions-link"
-                >
-                  Get Directions
-                </a>
-              </div>
-            </div>
-
           </div>
+
         </div>
 
       </div>
 
-
-      {/* Decorative botanicals sit independently of invitation layout. */}
-      <BotanicalLeft />
-      <BotanicalRight />
+    </div>
 
 
-      {/*
-        State 1 navigation cue.
+    {/* Decorative botanicals */}
+    <BotanicalLeft />
+    <BotanicalRight />
 
-        Kept outside .invitation-content so it stays anchored
-        to the bottom-center of the viewport rather than moving
-        with the invitation itself.
-      */}
-      <div
-        className="scroll-prompt"
-        aria-hidden="true"
-      >
-        <span>SCROLL TO CONTINUE</span>
-        <span className="scroll-arrow">↓</span>
-      </div>
 
-    </section>
-  )
+    {/* Bottom-center scroll cue */}
+    <div
+      className="scroll-prompt"
+      aria-hidden="true"
+    >
+      <span>SCROLL TO CONTINUE</span>
+      <span className="scroll-arrow">↓</span>
+    </div>
+
+  </section>
+)
+
 }
 
 export default InvitationHero

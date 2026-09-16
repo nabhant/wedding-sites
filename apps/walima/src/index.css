@@ -541,24 +541,28 @@ a {
     color-mix(in srgb, var(--text-brown) 20%, transparent);
 }
 
-.swatch-ivory {
-  background: #efe7d8;
+.swatch-cream {
+  background: #f3ebdd;
 }
 
-.swatch-buttercream {
-  background: #e3cf98;
+.swatch-lilac {
+  background: #bdb1df;
 }
 
-.swatch-powder-blue {
-  background: #afc4d2;
+.swatch-butter-yellow {
+  background: #e9d796;
 }
 
 .swatch-brown {
-  background: #5f4939;
+  background: #5b4639;
 }
 
-.swatch-plum {
-  background: #806a7a;
+.swatch-navy {
+  background: #46556c;
+}
+
+.swatch-burgundy {
+  background: #7d5459;
 }
 
 /* =========================================================

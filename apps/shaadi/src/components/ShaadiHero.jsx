@@ -526,6 +526,11 @@ function ShaadiHero() {
           </a>
         </div>
       </section>
+
+      <footer className="site-footer">
+      Made by Nabhan :)
+      </footer>
+      
     </div>
   )
 }

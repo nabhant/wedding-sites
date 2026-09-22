@@ -48,6 +48,21 @@ img {
   background: var(--shaadi-bg);
 }
 
+
+.shaadi-page {
+  min-height: 100vh;
+
+  color: var(--shaadi-gold);
+
+  background:
+    radial-gradient(
+      circle at center,
+      #7b2233 0%,
+      var(--shaadi-bg) 60%,
+      var(--shaadi-bg-dark) 100%
+    );
+}
+
 /* =========================================================
    TYPOGRAPHY
 ========================================================= */
@@ -94,13 +109,8 @@ img {
 
   color: var(--shaadi-gold);
 
-  background:
-    radial-gradient(
-      circle at center,
-      #7b2233 0%,
-      var(--shaadi-bg) 55%,
-      var(--shaadi-bg-dark) 100%
-    );
+  background: transparent;
+
 }
 
 /* =========================================================
@@ -520,15 +530,9 @@ img {
 
   color: var(--shaadi-gold);
 
-  background:
-    radial-gradient(
-      circle at center,
-      #7b2233 0%,
-      var(--shaadi-bg) 60%,
-      var(--shaadi-bg-dark) 100%
-    );
-
   text-align: center;
+
+  background: transparent;
 }
 
 .shaadi-info-block {
@@ -659,6 +663,43 @@ img {
 .shaadi-text-link:focus-visible {
   border-color: var(--shaadi-gold);
   opacity: 0.82;
+}
+
+
+/* footer */
+
+/* .site-footer {
+  width: 100%;
+
+  padding: 2.5rem 1rem 2rem;
+
+  text-align: center;
+
+  color: rgba(226, 196, 103, 0.65);
+
+  background: var(--shaadi-bg-dark);
+
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+
+  letter-spacing: 0.08em;
+} */
+
+.site-footer {
+  width: 100%;
+
+  padding: 2.5rem 1rem 2rem;
+
+  text-align: center;
+
+  color: rgba(226, 196, 103, 0.55);
+
+  background: transparent;
+
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+
+  letter-spacing: 0.1em;
 }
 
 /* =========================================================

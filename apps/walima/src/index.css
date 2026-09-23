@@ -541,29 +541,29 @@ a {
     color-mix(in srgb, var(--text-brown) 20%, transparent);
 }
 
-.swatch-cream {
-  background: #f3ebdd;
-}
-
-.swatch-lilac {
-  background: #bdb1df;
+.swatch-ivory {
+  background: #f0e8de;
 }
 
 .swatch-butter-yellow {
-  background: #e9d796;
+  background: #fff3c2;
 }
 
-.swatch-brown {
-  background: #5b4639;
+.swatch-tangerine {
+  background: #ffdfc4;
 }
 
-.swatch-navy {
-  background: #46556c;
+.swatch-baby-pink {
+  background: #ffd6dc;
+}
+.swatch-lilac {
+  background: #f5def7;
 }
 
-.swatch-burgundy {
-  background: #7d5459;
+.swatch-baby-blue {
+  background: #d8e5fa;
 }
+
 
 /* =========================================================
    SMALLER DESKTOP / LAPTOP

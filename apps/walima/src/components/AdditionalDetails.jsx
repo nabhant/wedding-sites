@@ -39,12 +39,12 @@ function AdditionalDetails() {
         aria-label="Recommended color palette"
         >
 
-          <span className="swatch swatch-cream" />
-          <span className="swatch swatch-lilac" />
+          <span className="swatch swatch-ivory" />
           <span className="swatch swatch-butter-yellow" />
-          <span className="swatch swatch-brown" />
-          <span className="swatch swatch-navy" />
-          <span className="swatch swatch-burgundy" />
+          <span className="swatch swatch-tangerine" />
+          <span className="swatch swatch-baby-pink" />
+          <span className="swatch swatch-lilac" />
+          <span className="swatch swatch-baby-blue" />
           
         </div>
     </div>
